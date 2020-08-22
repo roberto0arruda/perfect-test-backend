@@ -26,7 +26,7 @@ class ProductFieldsValidation extends FormRequest
         return [
             'name' => "required|min:3|max:255|unique:App\Product",
             'description' => "required|min:3|max:255",
-            'price' => "required|regex:/^\d+(\.\d{1,2})?$/"
+            'price' => "required|numeric|min:100"
         ];
     }
 }

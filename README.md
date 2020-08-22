@@ -1,3 +1,7 @@
+ # Doc
+ 
+ [![Actions Status](https://github.com/roberto0arruda/perfect-test-backend/workflows/Laravel%20Automated%20Test/badge.svg)](https://github.com/roberto0arruda/perfect-test-backend/actions)
+
  # Você quer ser um desenvolvedor Backend na Perfectpay? 
  O desafio é desenvolver um sistema de vendas onde consiste um cadastro de produtos, o próprio cadastro de vendas onde será preenchido alguns dados também referente a cliente, uma dashboard onde estará
 centralizado os dados de produtos, consulta de vendas e um relatório simplificado de vendas.

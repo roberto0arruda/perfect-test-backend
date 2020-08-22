@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\SaleResource;
 use App\Sale;
 use Illuminate\Http\Request;
 
@@ -11,11 +12,11 @@ class SaleController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Sale[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Http\Response
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function index()
     {
-        return Sale::all();
+        return SaleResource::collection(Sale::all());
     }
 
     /**

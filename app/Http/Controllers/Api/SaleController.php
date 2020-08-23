@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Customer;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SaleFieldsValidation;
 use App\Http\Resources\SaleResource;
 use App\Sale;
 use Illuminate\Http\Request;
@@ -22,18 +24,27 @@ class SaleController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SaleFieldsValidation $request)
     {
-        return Sale::create($request->all());
+        $customer = Customer::create($request->customer);
+
+        return Sale::create([
+            'customer_id' => $customer->id,
+            'product_id' => $request['product']['id'],
+            "quantity" => $request['quantity'],
+            "status" => $request['status'],
+            "date" => $request['date'],
+            "discount" => $request['discount']
+        ]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\JsonResponse
      */
     public function show($id)
@@ -46,8 +57,8 @@ class SaleController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -61,7 +72,7 @@ class SaleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\JsonResponse
      */
     public function destroy($id)

@@ -52,7 +52,7 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public
-    function update(Request $request, $id)
+    function update(ProductFieldsValidation $request, $id)
     {
         $product = Product::findOrFail($id);
         $product->update($request->all());

@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class SaleTest extends TestCase
 {
-    public function check_if_sale_columns_is_correct()
+    public function testCheckIfSaleColumnsIsCorrect()
     {
         $sale = new Sale;
 

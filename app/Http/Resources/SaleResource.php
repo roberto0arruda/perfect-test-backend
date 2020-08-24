@@ -21,7 +21,7 @@ class SaleResource extends JsonResource
             'customer' => CustomerResource::make($this->customer),
             'date' => Carbon::parse($this->date)->format('d/m/Y') . Carbon::parse($this->created_at)->format(' H\hi'),
             'quantity' => $this->quantity,
-            'discount' => $this->discount,
+            'discount' => number_format($this->discount, 2),
             'status' => $this->status
         ];
     }

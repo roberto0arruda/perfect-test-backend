@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\SaleFieldsValidation;
 use App\Http\Resources\SaleResource;
 use App\Sale;
-use Illuminate\Http\Request;
 
 class SaleController extends Controller
 {
@@ -51,6 +50,8 @@ class SaleController extends Controller
     {
         $sale = Sale::find($id);
 
+        $sale->load(['product', 'customer']);
+
         return $sale ?? response()->json(['message' => 'Not Found'], 404);
     }
 
@@ -61,10 +62,19 @@ class SaleController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SaleFieldsValidation $request, $id)
     {
+        $customer = Customer::findOrFail($id);
+        $customer->update($request->customer);
+
         $sale = Sale::findOrFail($id);
-        $sale->update($request->all());
+        $sale->update([
+            'product_id' => $request['product']['id'],
+            "quantity" => $request['quantity'],
+            "status" => $request['status'],
+            "date" => $request['date'],
+            "discount" => $request['discount']
+        ]);
 
         return $sale;
     }

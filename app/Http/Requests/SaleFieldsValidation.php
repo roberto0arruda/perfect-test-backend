@@ -25,8 +25,8 @@ class SaleFieldsValidation extends FormRequest
     {
         return [
             'customer.name' => 'required',
-            'customer.cpf' => 'required|unique:App\Customer,cpf',
-            'customer.email' => 'required|unique:App\Customer,email',
+            'customer.cpf' => "required_without:id|unique:App\Customer,cpf,{$this->customer_id},id",
+            'customer.email' => "required_without:id|unique:App\Customer,email,{$this->customer_id},id",
 
             'product.id' => 'required',
 

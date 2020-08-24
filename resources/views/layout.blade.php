@@ -21,6 +21,7 @@
         </div>
     </div>
 </div>
+<script src="{{ mix('/js/vue.js') }}"></script>
 <script src="{{ url('/js/app.js') }}"></script>
 <script src="https://kit.fontawesome.com/d712964458.js" crossorigin="anonymous"></script>
 @yield('script')

@@ -12,8 +12,6 @@ jobs:
     name: Laravel run tests
     runs-on: ubuntu-latest
     steps:
-      env:
-        APP_URL: http://localhost
       - name: Checkout Repo
         uses: actions/checkout@v2
 
@@ -25,3 +23,5 @@ jobs:
 
       - name: Execute tests (Unit and Feature tests) via PHPUnit
         run: vendor/bin/phpunit
+        env:
+          APP_URL: http://localhost

@@ -69,5 +69,4 @@ storage/framework/cache/data/.gitignore
 .DS_Store
 package-lock.json
 #composer.lock
-public/mix-manifest.json
 .phpunit.result.cache
